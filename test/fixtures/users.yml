@@ -4,3 +4,7 @@ tanaka:
   encrypted_password: <%= Devise::Encryptor.digest(User, 'Password!') %>
 sato:
   email: 'sato@example.com'
+  name: 'Sato'
+suzuki:
+  email: 'suzuki@example.com'
+  name: 'Suzuki'

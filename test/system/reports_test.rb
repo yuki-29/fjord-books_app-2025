@@ -16,26 +16,27 @@ class ReportsTest < ApplicationSystemTestCase
     fill_in 'タイトル', with: 'テスト技法の学習をした。'
     click_on '登録する'
     assert_text '日報が作成されました。'
-
     click_on '日報の一覧に戻る'
+    assert_selector '.index-item', text: 'テスト技法の学習をした。'
   end
 
   test 'should update Report' do
     visit report_url(@report)
     click_on 'この日報を編集'
     fill_in '内容', with: 'Railsのテストについて学んだ。'
-    fill_in 'タイトル', with: 'テスト技法の学習をした。'
+    fill_in 'タイトル', with: 'Railsのテスト技法の学習をした。'
     click_on '更新する'
-
     assert_text '日報が更新されました。'
     click_on '日報の一覧に戻る'
+    assert_selector '.index-item', text: 'Railsのテスト技法の学習をした。'
   end
 
   test 'should destroy Report' do
     visit report_url(@report)
+    assert_selector '.show-item', text: 'Railsの勉強'
     click_on 'この日報を削除'
-
     assert_text '日報が削除されました。'
     assert_selector 'h1', text: '日報の一覧'
+    assert_no_selector '.index-item', text: 'Railsの勉強'
   end
 end
