@@ -29,7 +29,8 @@ class ReportTest < ActiveSupport::TestCase
     @report.content = 'メンションテスト http://localhost:3000/reports/1 メンションテスト2 http://localhost:3000/reports/2'
     @report.save
     assert_equal(2, @report.mentioning_reports.count, '2つのメンションがある')
-    @report.destroy
+    @report.content = 'メンションテスト1、メンションテスト2'
+    @report.save
     assert_equal(0, @report.mentioning_reports.count, 'メンションが無い')
   end
 end
